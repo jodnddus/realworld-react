@@ -3,18 +3,21 @@ import {
 } from '../constants/actionTypes';
 
 const initialState = {
-    articlesCount: 0
+    articles: [],
+    articlesCount: 500
 }
 
 export default (state = initialState, action) => {
     switch (action.type) {
         case CHANGE_TAB:
-            console.log(action);
-            return {
-                ...state,
-                articles: action.payload.articles,
-                articlesCount: action.payload.articlesCount,
-            };
+            Promise.resolve(action.payload).then((res) => {
+                const data = {
+                    ...state,
+                    articles: res.articles,
+                    articlesCount: 400,
+                }
+                return data;
+            })
         default:
             return state;
     }
