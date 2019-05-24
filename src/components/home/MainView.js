@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { CHANGE_TAB } from '../../constants/actionTypes';
 import api from '../../api';
+import ArticleList from '../ArticleList';
 
 const mapStateToProps = state => {
     return {
@@ -11,8 +12,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onTabClick: (payload) => {
-            //console.log(payload);
+        onTabClick: payload => {
             dispatch({ type: CHANGE_TAB, payload });
         }
     }
@@ -28,16 +28,18 @@ const GlobalFeed = props => {
 
     return (
         <div>
-            <a href="" onClick={handleClick}>globalFeed</a>
+            <a href="" onClick={handleClick}>GlobalFeed</a>
         </div>
-    )
+    );
 }
 
 const Main = props => {
     return (
         <div>
-            <GlobalFeed onTabClick={props.onTabClick} />
-            <h1>{props.articlesCount}</h1>
+            <ul>
+                <GlobalFeed onTabClick={props.onTabClick} />
+            </ul>
+            <ArticleList articles={props.articles} />
         </div>
     );
 }

@@ -1,0 +1,17 @@
+.nav-item {
+    list-style: none;
+    display: inline;
+    margin: 0.3rem;
+}
+.nav-item a {
+    text-decoration: none;
+    color: gray;
+}
+.nav-item h1 {
+    margin: none;
+}
+.Header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

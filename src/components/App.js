@@ -1,12 +1,16 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Main from './home/Main';
+import { BrowserRouter, Route } from 'react-router-dom';
+import Home from '../components/home';
+import Header from './Header';
 
 function App() {
   return (
-    <BrowserRouter>
-      <Route path="/" component={Main} />
-    </BrowserRouter>
+    <div>
+      <BrowserRouter>
+        <Header />
+        <Route path="/" component={Home} />
+      </BrowserRouter>
+    </div>
   );
 }
 
