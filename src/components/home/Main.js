@@ -21,7 +21,9 @@ const mapDispatchToProps = dispatch => {
 const GlobalFeed = props => {
     const handleClick = e => {
         e.preventDefault();
-        props.onTabClick(api.Articles.all());
+        Promise.resolve(api.Articles.all()).then((res) => {
+            props.onTabClick(res);
+        });
     }
 
     return (
