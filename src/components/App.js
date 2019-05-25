@@ -8,6 +8,7 @@ function App() {
     <div>
       <BrowserRouter>
         <Header />
+        <hr />
         <Route path="/" component={Home} />
       </BrowserRouter>
     </div>

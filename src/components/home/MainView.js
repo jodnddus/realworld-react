@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { CHANGE_TAB } from '../../constants/actionTypes';
 import api from '../../api';
 import ArticleList from '../ArticleList';
+import './MainView.css';
 
 const mapStateToProps = state => {
     return {
@@ -28,7 +29,7 @@ const GlobalFeed = props => {
 
     return (
         <div>
-            <a href="" onClick={handleClick}>GlobalFeed</a>
+            <a href="" onClick={handleClick} id="globalfeed-tab">GlobalFeed</a>
         </div>
     );
 }
@@ -39,6 +40,7 @@ const Main = props => {
             <ul>
                 <GlobalFeed onTabClick={props.onTabClick} />
             </ul>
+            <hr />
             <ArticleList articles={props.articles} />
         </div>
     );

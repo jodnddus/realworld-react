@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { ARTICLE_FAVORITED, ARTICLE_UNFAVORITED } from '../constants/actionTypes';
 import api from '../api';
+import './ArticlePreview.css'
 
 const mapDispatchToProps = dispatch => ({
     favorite: slug => dispatch({
@@ -25,26 +26,30 @@ const ArticlePreview = props => {
 
     return (
         <div className="article-preview">
-            {/* 유저정보로 이동하는 유저 프로필 사진 */}
-            <Link to={`/@${article.author.username}`}>
-                <img src={article.author.image} alt={article.author.username} width="25%" />
-            </Link>
-
             {/* 유저정보로 이동하는 유저네임 */}
             <div className="info">
-                <Link to={`/@${article.author.username}`}>
-                    {article.author.username}
-                </Link>
-                <span className="date">
-                    {new Date(article.createdAt).toDateString()}
-                </span>
+                {/* 유저정보로 이동하는 유저 프로필 사진 */}
+                <div className="profile-info">
+                    <Link to={`/@${article.author.username}`}>
+                        <img src={article.author.image} alt={article.author.username} className="frofile-img" />
+                    </Link>
+                    <div className="name-date">
+                        <Link to={`/@${article.author.username}`} className="profile-info-username">
+                            {article.author.username}
+                        </Link>
+                        <span className="date">
+                            {new Date(article.createdAt).toDateString()}
+                        </span>
+                    </div>
+                </div>
+                <div className="favorite-btn">
+                    <button onClick={handleClick}>
+                        {article.favoritesCount}
+                    </button>
+                </div>
             </div>
 
-            <button onClick={handleClick}>
-                {article.favoritesCount}
-            </button>
-
-            <Link to={`/article/${article.slug}`}>
+            <Link to={`/article/${article.slug}`} className="description-info">
                 <h1>{article.title}</h1>
                 <h3>{article.description}</h3>
             </Link>
