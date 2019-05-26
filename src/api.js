@@ -18,11 +18,15 @@ const Articles = {
     favorite: slug => requests.post(`/articles/${slug}/favorite`),
     unfavorite: slug => requests.del(`/articles/${slug}/favorite`),
 };
+const Auth = {
+    login: (email, password) => requests.post('/users/login', { user: { email, password } }),
+}
 const Tags = {
     getAll: () => requests.get('/tags')
 };
 
 export default {
     Articles,
-    Tags
+    Tags,
+    Auth,
 }
