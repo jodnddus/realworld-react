@@ -8,6 +8,7 @@ import './MainView.css';
 const mapStateToProps = state => {
     return {
         ...state.articleList,
+        token: state.common.token,
     };
 }
 
@@ -17,6 +18,20 @@ const mapDispatchToProps = dispatch => {
             dispatch({ type: CHANGE_TAB, payload });
         }
     }
+}
+const YourFeed = props => {
+    if (props.token) {
+        const handleClick = e => {
+            e.preventDefault();
+            Promise.resolve(api.Articles.feed()).then((res) => {
+                props.onTabClick(res);
+            });
+        }
+        return (
+            <a href="" onClick={handleClick} id="yourfeed-tab">YourFeed</a>
+        );
+    }
+    return null;
 }
 
 const GlobalFeed = props => {
@@ -28,9 +43,7 @@ const GlobalFeed = props => {
     }
 
     return (
-        <div>
-            <a href="" onClick={handleClick} id="globalfeed-tab">GlobalFeed</a>
-        </div>
+        <a href="" onClick={handleClick} id="globalfeed-tab">GlobalFeed</a>
     );
 }
 

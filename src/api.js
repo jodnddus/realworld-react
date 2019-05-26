@@ -15,6 +15,7 @@ const requests = {
 };
 const Articles = {
     all: () => requests.get(`/articles`),
+    feed: () => requests.get('/articles/feed?limit=10&offset=0'),
     favorite: slug => requests.post(`/articles/${slug}/favorite`),
     unfavorite: slug => requests.del(`/articles/${slug}/favorite`),
 };
