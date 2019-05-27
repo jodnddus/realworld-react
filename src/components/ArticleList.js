@@ -8,7 +8,7 @@ const ArticleList = props => {
             {
                 props.articles.map(article => {
                     return (
-                        <ArticlePreview article={article} kay={article.slug} />
+                        <ArticlePreview article={article} />
                     );
                 })
             }

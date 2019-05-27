@@ -25,13 +25,13 @@ const ArticlePreview = props => {
     }
 
     return (
-        <div className="article-preview">
+        <div className="article-preview" key={article.slug}>
             {/* 유저정보로 이동하는 유저네임 */}
             <div className="info">
                 {/* 유저정보로 이동하는 유저 프로필 사진 */}
                 <div className="profile-info">
                     <Link to={`/@${article.author.username}`}>
-                        <img src={article.author.image} alt={article.author.username} className="frofile-img" />
+                        <img src={article.author.image} className="frofile-img" />
                     </Link>
                     <div className="name-date">
                         <Link to={`/@${article.author.username}`} className="profile-info-username">
@@ -44,7 +44,7 @@ const ArticlePreview = props => {
                 </div>
                 <div className="favorite-btn">
                     <button onClick={handleClick}>
-                        {article.favoritesCount}
+                        💗{article.favoritesCount}
                     </button>
                 </div>
             </div>
