@@ -8,16 +8,8 @@ import {
 } from '../constants/actionTypes';
 import './Login.css'
 
-/* const mapDispatchToProps = dispatch => ({
-    onChangeEmail: value => dispatch({ type: UPDATE_FIELD_AUTH, key: 'email', value }),
-    onChangePassword: value => dispatch({ type: UPDATE_FIELD_AUTH, key: 'password', value }),
-    onSubmit: (email, password) => dispatch({ type: LOGIN, payload: api.Auth.login(email, password) }),
-    onUnload: () =>
-        dispatch({ type: LOGIN_PAGE_UNLOADED })
-}) */
-
 function Login() {
-    //mapStateToProps, mapDIspatchToProps 대신 사용하는 react-redux의 hook!
+    //mapStateToProps, mapDIspatchToProps 대신 사용하는 react-redux의 hook! 엄청 쿨함!
     const authState = useSelector(state => state.auth);
     const authDispatch = useDispatch();
 
@@ -30,7 +22,7 @@ function Login() {
             authDispatch({ type: LOGIN, payload: res });
         });
     };
-
+    
     return (
         <div className="login-page">
             <h1>Sign In</h1>
@@ -48,7 +40,7 @@ function Login() {
                 <button type="submit">Sign in</button>
                 <h1>{authState.email}{authState.password}</h1>
             </form>
-            <h1>{authState.errors}</h1>
+            <h1>{authState.token}</h1>
         </div>
     );
 }
