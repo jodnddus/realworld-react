@@ -1,6 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import MainView from './MainView';
+import { useSelector, useDispatch } from 'react-redux';
+import FeedTab from './FeedTab';
+import ArticleList from '../ArticleList';
 import Banner from './Banner';
 import api from '../../api';
 import {
@@ -8,26 +9,33 @@ import {
     HOME_PAGE_UNLOADED,
 } from '../../constants/actionTypes';
 
-const mapDispatchToProps = dispatch => ({
-    onLoad: payload => dispatch({ type: HOME_PAGE_LOADED, payload }),
-    onUnload: () => dispatch({ type: HOME_PAGE_UNLOADED })
-});
+// const mapStateToProps = state => ({
+//     ...state.articleList,
+//     token: state.auth.token
+// });
 
-class Home extends React.Component {
-    componentWillMount() {
-        Promise.resolve(api.Articles.all()).then((res) => {
-            this.props.onLoad(res);
-        });
-    }
+// const mapDispatchToProps = dispatch => ({
+//     onLoad: (tab, pager, payload) => dispatch({ type: HOME_PAGE_LOADED, tab, pager, payload }),
+//     onUnload: () => dispatch({ type: HOME_PAGE_UNLOADED })
+// });
 
-    componentWillUnmount() {
-        this.props.onUnload();
-    }
-    render() {
-        return (
-            <MainView />
-        );
-    }
+function Home() {
+    const { articleState, tokenState } = useSelector(state => ({ articleState: state.articleList, tokenState: state.auth.token }));
+    const homeDispatch = useDispatch();
+    const tab = tokenState ? 'feed' : 'all';
+    const articlesPromise = tokenState ? api.Articles.feed : api.Articles.all;
+
+    // 동기적으로 실행을 해서 모든 작업을 끝낸 후 render()로 넘어가야 함.a
+    Promise.resolve(api.Articles.all()).then((res) => {
+        homeDispatch({ type: HOME_PAGE_LOADED, tab, articlesPromise, res });
+    });
+
+    return (
+        <div>
+            <FeedTab />
+            <ArticleList articles={articleState.articles} />
+        </div>
+    );
 }
 
-export default connect(() => ({}), mapDispatchToProps)(Home);
+export default Home;
