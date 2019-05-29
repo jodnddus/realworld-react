@@ -32,3 +32,15 @@
 .description-info h1 {
     color: black;
 }
+.favorite-article {
+    all: unset;
+    border: 1px solid #f5f9fc;
+    background-color: #9900FF;
+    border-radius: 5px;
+}
+.not-favorite-article {
+    all: unset;
+    border: 1px solid #9900FF;
+    background-color: #f5f9fc;
+    border-radius: 5px;
+}
