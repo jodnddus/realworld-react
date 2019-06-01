@@ -19,6 +19,7 @@ export default (state = initialState, action) => {
     switch (action.type) {
         case ARTICLE_FAVORITED:
         case ARTICLE_UNFAVORITED:
+            console.log(action);
             return {
                 ...state,
                 articles: state.articles.map(article => {
@@ -27,24 +28,22 @@ export default (state = initialState, action) => {
                             ...article,
                             favorite: action.payload.article.favorited,
                             favoritesCount: action.payload.article.favoritesCount
-                        }
+                        };
                     }
+                    return article;
                 })
             };
         case CHANGE_TAB:
             return {
+                ...state,
                 articles: action.payload.articles,
                 articlesCount: action.payload.articlesCount
             };
         case HOME_PAGE_LOADED:
-            console.log("1");
             return {
                 ...state,
-                pager: action.pager,
-                articles: action.res.articles,
-                articlesCount: action.res.articlesCount,
-                currentPage: 0,
-                tab: action.tab
+                articles: action.payload.articles,
+                articlesCount: action.payload.articlesCount,
             };
         case HOME_PAGE_UNLOADED:
             return {};
