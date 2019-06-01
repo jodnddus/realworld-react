@@ -20,3 +20,19 @@
 .login-page h1 {
     text-align: center;
 }
+#sign-in {
+    all: unset;
+    background-color: #9900FF;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#sign-in:hover {
+    background-color: #5a0096;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
