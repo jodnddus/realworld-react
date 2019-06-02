@@ -40,7 +40,7 @@ class App extends React.Component {
     return (
       <React.Fragment>
         <BrowserRouter>
-          <Header />
+          <Header currentUser={this.props.currentUser} />
           <hr />
           <Route exact path="/" component={Home} />
           <Route path="/login" component={Login} />

@@ -7,9 +7,6 @@
     text-decoration: none;
     color: gray;
 }
-.nav-item h1 {
-    margin: none;
-}
 .Header {
     display: flex;
     justify-content: space-between;
