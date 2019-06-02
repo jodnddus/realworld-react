@@ -27,13 +27,13 @@ const ArticlePreview = props => {
             console.log(article.slug);
             Promise.resolve(api.Articles.unfavorite(article.slug)).then((res) => {
                 console.log(res);
-                props.favorite(res);
+                props.unfavorite(res);
             });
         } else {
             console.log(article.slug);
             Promise.resolve(api.Articles.favorite(article.slug)).then((res) => {
                 console.log(res);
-                this.props.favorite(res);
+                props.favorite(res);
             });
         }
     };
