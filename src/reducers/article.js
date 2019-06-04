@@ -8,7 +8,7 @@ export default (state = {}, action) => {
     case ARTICLE_PAGE_LOADED: 
       return {
         ...state,
-        item: action.payload[0].article,
+        article: action.payload[0].article,
         comments: action.payload[1].comments
       };
     case ARTICLE_PAGE_UNLOADED:
