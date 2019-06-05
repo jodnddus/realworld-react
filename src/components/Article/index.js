@@ -8,7 +8,10 @@ import {
 } from '../../constants/actionTypes';
 
 const mapStateToProps = state => ({
-  article: state.article.article
+  title: state.article.title,
+  username: state.article.usename,
+  image: state.article.image,
+  createdAt: state.article.createdAt
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -26,7 +29,13 @@ class Article extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Articlemeta article={this.props.article} />
+        <div className="container">
+          <h1>{this.props.title}</h1>
+          <Articlemeta
+            username={this.props.username}
+            image={this.props.image}
+            createdAt={this.props.createdAt} />
+        </div>
       </React.Fragment>
     );
   }

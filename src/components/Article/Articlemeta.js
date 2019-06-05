@@ -2,10 +2,20 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Articlemeta = props => {
-  console.log(props.article)
   return (
-    <div>
-      <h1>{typeof props.article}</h1>
+    <div className="article-meta">
+      <Link to={`/@${props.username}`}>
+        <img src={props.image} alt={props.username} />
+      </Link>
+
+      <div className="info">
+        <Link to={`/@${props.username}`} className="author">
+          {props.username}
+        </Link>
+        <span className="date">
+          {new Date(props.createdAt).toDateString()}
+        </span>
+      </div>
     </div>
   );
 }

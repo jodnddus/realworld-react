@@ -8,7 +8,10 @@ export default (state = {}, action) => {
     case ARTICLE_PAGE_LOADED: 
       return {
         ...state,
-        article: action.payload[0].article,
+        usename: action.payload[0].article.author.usename,
+        image: action.payload[0].article.author.image,
+        title: action.payload[0].article.title,
+        createdAt: action.payload[0].article.createdAt,
         comments: action.payload[1].comments
       };
     case ARTICLE_PAGE_UNLOADED:
