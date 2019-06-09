@@ -1,0 +1,23 @@
+.article-meta {
+  display: flex;
+  margin-top: 20px;
+}
+.article-info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  font-size: 90%;
+}
+.article-info a {
+  text-decoration: none;
+  color: white;
+}
+.article-info a:hover {
+  text-decoration: underline;
+}
+.article-profile-img {
+  border-radius: 100%;
+  width: 2rem;
+}

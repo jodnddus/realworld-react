@@ -1,14 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './Articlemeta.css';
 
 const Articlemeta = props => {
   return (
     <div className="article-meta">
-      <Link to={`/@${props.username}`}>
-        <img src={props.image} alt={props.username} />
+      <Link to={`/@${props.username}`} >
+        <img src={props.image} alt={props.username} className="article-profile-img" />
       </Link>
 
-      <div className="info">
+      <div className="article-info">
         <Link to={`/@${props.username}`} className="author">
           {props.username}
         </Link>

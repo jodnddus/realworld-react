@@ -20,28 +20,25 @@ const mapDispatchToProps = dispatch => ({
 const ArticlePreview = props => {
     const article = props.article;
     const favoriteButtonClass = article.favorited ? "favorite-article" : "not-favorite-article";
+    const favoriteHeartId = article.favorite ? "favorite-heart" : "not-favorite-heart";
 
     const handleClick = e => {
         e.preventDefault();
         if (article.favorite) {
-            console.log(article.slug);
             Promise.resolve(api.Articles.unfavorite(article.slug)).then((res) => {
-                console.log(res);
                 props.unfavorite(res);
             });
         } else {
-            console.log(article.slug);
             Promise.resolve(api.Articles.favorite(article.slug)).then((res) => {
-                console.log(res);
                 props.favorite(res);
             });
         }
     };
 
     return (
-        <div className="article-preview" key={props.key}>
+        <div className="article-preview">
             {/* 유저정보로 이동하는 유저네임 */}
-            <div className="info">
+            <div className="meta-info">
                 {/* 유저정보로 이동하는 유저 프로필 사진 */}
                 <div className="profile-info">
                     <Link to={`/@${article.author.username}`}>
@@ -54,12 +51,11 @@ const ArticlePreview = props => {
                         <span className="date">
                             {new Date(article.createdAt).toDateString()}
                         </span>
-                        <h4>slug: {article.slug}</h4>
                     </div>
                 </div>
                 <div className="favorite-btn">
                     <button onClick={handleClick} className={favoriteButtonClass}>
-                        <span role="img" aria-label="like">💗</span>{article.favoritesCount}
+                        <span id={favoriteHeartId}>&hearts;</span>{article.favoritesCount}
                     </button>
                 </div>
             </div>

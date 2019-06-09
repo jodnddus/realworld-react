@@ -48,12 +48,14 @@ const mapDispatchToProps = dispatch => ({
 
 const MainView = props => {
     return (
-        <React.Fragment>
-            <GlobalFeed onTabClick={props.onTabClick} />
-            <YourFeed token={props.token} onTabClick={props.onTabClick} />
+        <div className="MainView">
+            <div className="tabs">
+                <GlobalFeed onTabClick={props.onTabClick} />
+                <YourFeed token={props.token} onTabClick={props.onTabClick} />
+            </div>
             <hr />
-            <ArticleList articles={props.articles}/>
-        </React.Fragment>
+            <ArticleList articles={props.articles} />
+        </div>
     );
 }
 

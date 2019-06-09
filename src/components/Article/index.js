@@ -2,6 +2,7 @@ import * as React from "react";
 import { connect, useSelector, useDispatch } from 'react-redux';
 import Articlemeta from './Articlemeta';
 import api from '../../api';
+import './Article.css';
 import {
   ARTICLE_PAGE_LOADED,
   ARTICLE_PAGE_UNLOADED
@@ -9,9 +10,10 @@ import {
 
 const mapStateToProps = state => ({
   title: state.article.title,
-  username: state.article.usename,
+  username: state.article.username,
   image: state.article.image,
-  createdAt: state.article.createdAt
+  createdAt: state.article.createdAt,
+  body: state.article.body
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -27,14 +29,18 @@ class Article extends React.Component {
   }
 
   render() {
+    console.log(this.props.username);
     return (
       <React.Fragment>
         <div className="container">
-          <h1>{this.props.title}</h1>
-          <Articlemeta
-            username={this.props.username}
-            image={this.props.image}
-            createdAt={this.props.createdAt} />
+          <div className="article-banner">
+            <h1>{this.props.title}</h1>
+            <Articlemeta
+              username={this.props.username}
+              image={this.props.image}
+              createdAt={this.props.createdAt} />
+            </div>
+            <p>{this.props.body}</p>
         </div>
       </React.Fragment>
     );

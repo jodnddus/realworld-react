@@ -2,7 +2,7 @@
     border-radius: 100%;
     width: 2rem;
 }
-.info {
+.meta-info {
     display: flex;
     justify-content: space-between;
 }
@@ -12,6 +12,9 @@
 .profile-info-username {
     text-decoration: none;
     color: #9900FF;
+}
+.profile-info-username:hover {
+    text-decoration: underline;
 }
 .date {
     color: gray;
@@ -36,11 +39,25 @@
     all: unset;
     border: 1px solid #f5f9fc;
     background-color: #9900FF;
-    border-radius: 5px;
+    color: #f5f9fc;
+    border-radius: 3px;
+    padding: 3px 7px;
+}
+.favorite-article span {
+    display: inline;
+    padding: 0 3px 0 0;
+    color: #f5f9fc;
 }
 .not-favorite-article {
     all: unset;
     border: 1px solid #9900FF;
     background-color: #f5f9fc;
-    border-radius: 5px;
+    color: #9900FF;
+    border-radius: 3px;
+    padding: 3px 7px;
+}
+.not-favorite-article span {
+    display: inline;
+    padding: 0 3px 0 0;
+    color: #9900FF;
 }
