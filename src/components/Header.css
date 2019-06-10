@@ -11,7 +11,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 3rem;
 }
 #page-name {
     color: #9900FF;
+    margin: 10px 0;
 }
