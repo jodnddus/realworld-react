@@ -1,11 +1,10 @@
 import * as React from "react";
-import { connect, useSelector, useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
 import Articlemeta from './Articlemeta';
 import api from '../../api';
 import './Article.css';
 import {
   ARTICLE_PAGE_LOADED,
-  ARTICLE_PAGE_UNLOADED
 } from '../../constants/actionTypes';
 
 const mapStateToProps = state => ({
@@ -29,7 +28,7 @@ class Article extends React.Component {
   }
 
   render() {
-    console.log(this.props.username);
+    const markup = { __html: this.props.body };
     return (
       <React.Fragment>
         <div className="container">
@@ -39,8 +38,11 @@ class Article extends React.Component {
               username={this.props.username}
               image={this.props.image}
               createdAt={this.props.createdAt} />
-            </div>
-            <p>{this.props.body}</p>
+          </div>
+          <div className="article-body">
+            <div dangerouslySetInnerHTML={markup}></div>
+            <hr />
+          </div>
         </div>
       </React.Fragment>
     );
