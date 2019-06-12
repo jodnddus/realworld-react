@@ -1,5 +1,6 @@
 import React from 'react';
 import api from '../../api';
+import './Tags.css'
 
 const Tags = props => {
   const tags = props.tags;
@@ -9,11 +10,7 @@ const Tags = props => {
         {
           tags.map(tag => {
             return (
-              <a
-                href=""
-                key={tag}>
-                {tag}<br />
-              </a>
+              <a href="" key={tag} className="tag-name">#{tag}</a>
             );
           })
         }

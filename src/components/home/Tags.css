@@ -1,0 +1,13 @@
+.tag-name {
+  margin: 0 5px;
+  text-decoration: none;
+  color: black;
+  font-family: 'Times New Roman', Times, serif;
+}
+.tag-name:hover {
+  text-decoration: underline;
+}
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+}
