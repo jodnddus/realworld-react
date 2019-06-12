@@ -8,3 +8,7 @@
     padding: 0 3rem;
     margin-top: 30px;
 }
+.home {
+    display: flex;
+    flex-direction: row;
+}

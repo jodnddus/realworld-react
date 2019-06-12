@@ -2,11 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import MainView from './MainView';
 import api from '../../api';
+import Tags from './Tags';
 import {
     HOME_PAGE_LOADED,
 } from '../../constants/actionTypes';
 
 const mapStateToProps = state => ({
+    ...state.home,
     token: state.common.token,
 });
 
@@ -16,16 +18,18 @@ const mapDispatchToProps = dispatch => ({
 
 class Home extends React.Component {
     componentDidMount() {
-        Promise.resolve(api.Articles.all()).then((res) => {
-            this.props.onLoad(res);
-        });
+        Promise.resolve(Promise.all([
+            api.Tags.getAll(),
+            api.Articles.all()
+        ])).then((res) => this.props.onLoad(res));
     }
 
     render() {
         return (
-            <React.Fragment>
+            <div className="home">
                 <MainView />
-            </React.Fragment>
+                <Tags tags={this.props.tags} />
+            </div>
         );
     }
 }
