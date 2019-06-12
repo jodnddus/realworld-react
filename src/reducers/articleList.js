@@ -19,7 +19,6 @@ export default (state = initialState, action) => {
     switch (action.type) {
         case ARTICLE_FAVORITED:
         case ARTICLE_UNFAVORITED:
-            console.log(action);
             return {
                 ...state,
                 articles: state.articles.map(article => {
@@ -40,10 +39,11 @@ export default (state = initialState, action) => {
                 articlesCount: action.payload.articlesCount
             };
         case HOME_PAGE_LOADED:
+            console.log(action.payload);
             return {
                 ...state,
-                articles: action.payload.articles,
-                articlesCount: action.payload.articlesCount,
+                articles: action.payload[1].articles,
+                articlesCount: action.payload[1].articlesCount,
             };
         case HOME_PAGE_UNLOADED:
             return {};

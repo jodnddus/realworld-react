@@ -47,9 +47,6 @@ import {
         };
       case LOGIN:
       case REGISTER:
-        if(action.error) {
-          localStorage.setItem("jwt", action.payload.user.token);
-        }
         return {
           ...state,
           redirectTo: action.error ? null : '/',

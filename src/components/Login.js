@@ -24,20 +24,23 @@ function Login() {
     return (
         <div className="login-page">
             <h1>Sign In</h1>
-            <form onSubmit={submitForm(authState.email, authState.password)}>
-                <input
-                    className="form-input"
-                    placeholder="Email"
-                    type="email"
-                    onChange={emailChange} />
-                <input
-                    className="form-input"
-                    placeholder="Password"
-                    type="password"
-                    onChange={passwordChange} />
-                <button id="sign-in" type="submit">Sign in</button>
-                <h1>{authState.email}{authState.password}</h1>
-            </form>
+            <div className="login-form">
+                <form onSubmit={submitForm(authState.email, authState.password)}>
+                    <input
+                        className="form-input"
+                        placeholder="Email"
+                        type="email"
+                        onChange={emailChange} />
+                    <input
+                        className="form-input"
+                        placeholder="Password"
+                        type="password"
+                        onChange={passwordChange} />
+                    <div className="login-btn">
+                        <button id="sign-in" type="submit">Sign in</button>
+                    </div>
+                </form>
+            </div>
         </div>
     );
 }
