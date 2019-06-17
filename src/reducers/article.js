@@ -7,7 +7,6 @@ import marked from 'marked';
 export default (state = {}, action) => {
   switch (action.type) {
     case ARTICLE_PAGE_LOADED: 
-      console.log(action);
       return {
         ...state,
         username: action.payload[0].article.author.username,

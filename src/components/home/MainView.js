@@ -29,9 +29,7 @@ const YourFeed = props => {
 }
 
 const GlobalFeed = props => {
-    console.log("GlobalTabs: ", props);
     const handleClick = e => {
-        console.log("handleClick");
         e.preventDefault();
         Promise.resolve(api.Articles.all()).then((res) => {
             props.onTabClick("all", res);
@@ -55,7 +53,7 @@ const TagFilterTab = props => {
 
     return (
         <li className="nav-item">
-            <a href="" className="nav-link">
+            <a href="''" className="nav-link">
                 <i className="ion-pound"></i> #{props.tag}
             </a>
         </li>

@@ -16,11 +16,11 @@ const ArticleList = props => {
     }
     
     return (
-        <div>
+        <div className="articles">
             {
-                props.articles.map(article => {
+                props.articles.map((article, i) => {
                     return (
-                        <ArticlePreview article={article} key={article.slug}/>
+                        <ArticlePreview article={article} key={i} />
                     );
                 })
             }

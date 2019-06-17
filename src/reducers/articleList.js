@@ -34,7 +34,6 @@ export default (state = initialState, action) => {
                 })
             };
         case CHANGE_TAB:
-            console.log(action);
             return {
                 ...state,
                 articles: action.payload.articles,
@@ -43,7 +42,6 @@ export default (state = initialState, action) => {
                 tag: null
             };
         case HOME_PAGE_LOADED:
-            console.log(action);
             return {
                 ...state,
                 tags: action.payload[0].tags,
@@ -52,7 +50,6 @@ export default (state = initialState, action) => {
                 tab: action.tab
             };
         case APPLY_TAG_FILTER:
-            console.log(action);
             return {
                 ...state,
                 articles: action.payload.articles,
