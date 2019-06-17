@@ -1,9 +1,6 @@
 #globalfeed-tab {
     color: #9900FF;
 }
-.feed-tabs {
-    margin: 0 10px;
-}
 .tabs {
     margin-top: 30px;
 }
@@ -11,4 +8,20 @@
     display: flex;
     flex-direction: column;
     margin: 0 5rem;
+}
+.feed-tabs {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #AAAAAA;
+}
+.feed-tabs:hover {
+    color: #3f4247;
+}
+.active {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #9900FF;
+}
+.nav-link {
+    color: #9900FF;
 }

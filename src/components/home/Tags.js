@@ -9,8 +9,15 @@ const Tags = props => {
       <div className="tag-list">
         {
           tags.map(tag => {
+            const handlelick = e => {
+              e.preventDefault();
+              Promise.resolve(api.Articles.byTag(tag)).then((res) => {
+                props.onClickTag(tag, res);
+              });
+            };
+            
             return (
-              <a href="" key={tag} className="tag-name">#{tag}</a>
+              <a href="" key={tag} className="tag-name" onClick={handlelick}>#{tag}</a>
             );
           })
         }

@@ -13,27 +13,38 @@ const YourFeed = props => {
             console.log("handleClick");
             e.preventDefault();
             Promise.resolve(api.Articles.feed()).then((res) => {
-                props.onTabClick({ type: CHANGE_TAB, payload: res });
+                props.onTabClick("feed", res);
             });
         }
         return (
-            <a href="''" onClick={handleClick} id="yourfeed-tab" className="feed-tabs">YourFeed</a>
+            <a 
+                href="''" 
+                onClick={handleClick} 
+                className={ props.tab === "feed" ? "active" : "feed-tabs" }>
+                YourFeed
+            </a>
         );
     }
     return null;
 }
 
 const GlobalFeed = props => {
+    console.log("GlobalTabs: ", props);
     const handleClick = e => {
         console.log("handleClick");
         e.preventDefault();
         Promise.resolve(api.Articles.all()).then((res) => {
-            props.onTabClick({ type: CHANGE_TAB, payload: res });
+            props.onTabClick("all", res);
         });
     }
 
     return (
-        <a href="''" onClick={handleClick} id="globalfeed-tab" className="feed-tabs">GlobalFeed</a>
+        <a 
+            href="''" 
+            onClick={handleClick} 
+            className={ props.tab === "all" ? "active" : "feed-tabs" }>
+            GlobalFeed
+        </a>
     );
 }
 
@@ -44,8 +55,8 @@ const TagFilterTab = props => {
 
     return (
         <li className="nav-item">
-            <a href="" className="nav-link active">
-                <i className="ion-pound"></i> {props.tag}
+            <a href="" className="nav-link">
+                <i className="ion-pound"></i> #{props.tag}
             </a>
         </li>
     )
@@ -58,17 +69,17 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    onTabClick: payload => dispatch({ type: CHANGE_TAB, payload })
+    onTabClick: (tab, payload) => dispatch({ type: CHANGE_TAB, tab, payload })
 });
 
 const MainView = props => {
     return (
         <div className="MainView">
             <div className="tabs">
-                <GlobalFeed onTabClick={props.onTabClick} />
-                <YourFeed token={props.token} onTabClick={props.onTabClick} />
+                <GlobalFeed onTabClick={props.onTabClick} tab={props.tab} />
+                <YourFeed token={props.token} tab={props.tab} onTabClick={props.onTabClick} />
+                <TagFilterTab tag={props.tag} />
                 <hr />
-                {/* <TagFilterTab tag={props.tags} /> */}
             </div>
             <ArticleList articles={props.articles} />
         </div>
